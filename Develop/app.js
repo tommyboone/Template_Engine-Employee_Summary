@@ -1,14 +1,144 @@
+
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-​
+​const render = require("./lib/htmlRenderer");
 const OUTPUT_DIR = path.resolve(__dirname, "output")
 const outputPath = path.join(OUTPUT_DIR, "team.html");
+const writeFileAsync = util.promisify(fs.writeFile);
+
+
 ​
-const render = require("./lib/htmlRenderer");
+promptUser = (response) => {
+ inquirer.prompt([
+        {
+            type: "input",
+            name: "managerName",
+            message: "Enter name of Manager: "
+        },
+        {
+            type: "input",
+            name: "managerID",
+            message: "Enter ID of manager: "
+        },
+        {
+            type: "input",
+            name: "managerEmail",
+            message: "Enter email of manager: "
+        },
+        {
+            type: "input",
+            name: "officeManager",
+            message: "Enter office number of manager: "
+        },
+        {
+            type: "input",
+            name: "engineer1Name",
+            message: "Enter name of engineer number 1: "
+        },
+        {
+            type: "input",
+            name: "engineer1ID",
+            message: "Enter ID of engineer number 1: "
+        },
+        {
+            type: "input",
+            name: "emailEngineer1",
+            message: "Enter email of engineer number 1: "
+        },
+        {
+            type: "input",
+            name: "githubEngineer1",
+            message: "Enter GitHub Username of engineer number 1: "
+        },
+        {
+            type: "input",
+            name: "engineer2Name",
+            message: "Enter name of engineer number 2: "
+        },
+        {
+            type: "input",
+            name: "engineer2ID",
+            message: "Enter ID of engineer number 2: "
+        },
+        {
+            type: "input",
+            name: "emailEngineer2",
+            message: "Enter email of engineer number 2: "
+        },
+        {
+            type: "input",
+            name: "githubEngineer2",
+            message: "Enter GitHub Username of engineer number 2: "
+        },
+  
+        {
+            type: "input",
+            name: "engineer3Name",
+            message: "Enter name of engineer number 3: "
+        },
+        {
+            type: "input",
+            name: "engineer3ID",
+            message: "Enter ID of engineer number 3: "
+        },
+        {
+            type: "input",
+            name: "emailEngineer3",
+            message: "Enter email of engineer number 3: "
+        },
+        {
+            type: "input",
+            name: "githubEngineer3",
+            message: "Enter GitHub Username of engineer number 3: "
+        },
+        
+  
+        {
+            type: "input",
+            name: "nameIntern",
+            message: "Enter name of Intern: "
+        },
+        {
+            type: "input",
+            name: "internID",
+            message: "Enter ID of Intern: "
+        },
+        {
+            type: "input",
+            name: "emailIntern",
+            message: "Enter email of Intern:"
+        },
+        {
+            type: "input",
+            name: "linkedinIntern",
+            message: "Enter linkedin account of intern: "
+        },
+        console.log(response)
+       
+    ]);
+}
+  
+
+  
+  async function init() {
+   
+    try {
+        const answers = await promptUser();
+    
+        await writeFileAsync(outputPath, answers);
+  
+        console.log("Successfully wrote to team.html");
+    } catch (err) {
+        console.log(err);
+    }
+  }
+
+render();
+init();
 ​
 ​
 // Write code to use inquirer to gather information about the development team members,

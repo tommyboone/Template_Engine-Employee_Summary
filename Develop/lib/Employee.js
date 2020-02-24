@@ -26,5 +26,7 @@ class Employee {
       return "Employee";
     };
   };
+
+  console.log(Employee);
   
   module.exports = Employee;
