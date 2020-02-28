@@ -10,4 +10,4 @@ so that I have quick access to emails and GitHub profiles
 ![alt_image](./Develop/Team-Profile-Screenshot.png)
 
 # GIF Demo
-![]https://media.giphy.com/media/RJc13Tdgb9DsawrDEq/giphy.gif
+![](https://media.giphy.com/media/RJc13Tdgb9DsawrDEq/giphy.gif)
