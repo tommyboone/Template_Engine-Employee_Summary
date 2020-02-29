@@ -2,12 +2,8 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
-
 const fs = require("fs");
-// const render = require("./lib/htmlRenderer");
-// // const OUTPUT_DIR = path.resolve(__dirname, "output");
-// // const outputPath = path.join(OUTPUT_DIR, "team.html");
-// const util = require("util");
+
 
 // ===== START FUNCTION =====
 async function buildTeam() {
@@ -17,7 +13,7 @@ async function buildTeam() {
   let teamHTML = "";
 
   // Variable to hold number of team members
-  // let teamSize;
+ 
 
   // First Question to ask to set up loop
   await inquirer
@@ -27,8 +23,6 @@ async function buildTeam() {
       name: "noOfTeamMem"
     })
     .then(data => {
-      // Number of team members placed in teamSize for scope purposes.
-      // 1 is added start from 1 rather than 0 for user understanding.
       teamSize = data.noOfTeamMem + 1;
 
       // If Team Size is 0, will end program
@@ -104,7 +98,6 @@ async function buildTeam() {
           });
         break;
 
-      //Steps Similar to Manager but for intern
       case "Intern":
         await inquirer
           .prompt([
@@ -145,7 +138,7 @@ async function buildTeam() {
 
   // Use eval to implement template literals in main.html and places teamHTML inside main template
   teamHTML = eval("`" + mainHTML + "`");
-
+x
   // write file to new team.html file
   fs.writeFile("output/team.html", teamHTML, function(err) {
     if (err) {
